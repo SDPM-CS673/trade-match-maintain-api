@@ -44,7 +44,6 @@ orderbookModel.addOrder = (data, userId) => {
                 ${0},                     
                 ${0}                           
         );`
-        console.log(query);
         db.query(query).then((result) => {
             resolve(result);
         }).catch((error) => {
