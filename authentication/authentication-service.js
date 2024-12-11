@@ -9,7 +9,7 @@ const login = (req, res) => {
         // authenticate user
         user.authenthicate(data.email, data.password).then((data) => {
             const token = jwt.generateToken(data.user_id);
-            res.header('Authorization', token);
+            data.token = token;
             res.status(200).send({
                 code: 2000,
                 messageKey: "login.success",
@@ -72,7 +72,40 @@ const register = (req, res) => {
     }
 }
 
+const session = (req, res) => {
+    if (req.user) {
+        user.findOneById(req.user.userId).then((data) => {
+            if (data) {
+                res.status(200).send({
+                    code: 2000,
+                    messageKey: "Session created!",
+                    data: data
+                }) 
+            } else {
+                res.status(400).send({
+                    code: 4000,
+                    messageKey: "User not found!",
+                    data: {}
+                })
+            }
+        }, (error) => {
+            res.status(500).send({
+                code: 5000,
+                messageKey: "Internal Server Error!",
+                data: {}
+            })
+        })
+    } else {
+        res.status(200).send({
+            code: 2000,
+            messageKey: "Session created!",
+            data: {}
+        })
+    }
+}
+
 module.exports = {
     login: login,
-    register: register
+    register: register,
+    session: session
 }

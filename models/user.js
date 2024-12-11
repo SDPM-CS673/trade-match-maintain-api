@@ -64,4 +64,20 @@ user.findOne = (email) => {
     })
 }
 
+user.findOneById = (userId) => {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM users WHERE user_id = '${userId}'`;
+        db.query(query).then((result) => {
+            if (result.rows.length > 0) {
+                resolve(result.rows[0]);
+            } else {
+                resolve(false);
+            }
+        }).catch((error) => {
+            console.error(error);
+            reject(error);
+        })
+    })
+}
+
 module.exports = user;

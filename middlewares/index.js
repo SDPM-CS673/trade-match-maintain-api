@@ -58,6 +58,9 @@ module.exports = function (app) {
     // Validate token
     validateToken(app);
 
+    // set req.user
+    require("./req_user")(app);
+
     // Decrypt req body
 	// require("./decrypt-payload")(app);
 
