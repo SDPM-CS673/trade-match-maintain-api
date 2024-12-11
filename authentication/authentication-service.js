@@ -4,7 +4,7 @@ const user = require('../models/user');
 const jwt = require('../utils/jwttoken');
 
 const login = (req, res) => {
-    const data = common.sanitize(req.body);
+    const data = common.sanitize(req.body, schema.login);
     if (schema.validate(data, schema.login)) {
         // authenticate user
         user.authenthicate(data.email, data.password).then((data) => {
@@ -40,7 +40,7 @@ const login = (req, res) => {
 }
 
 const register = (req, res) => {
-    const data = common.sanitize(req.body);
+    const data = common.sanitize(req.body, schema.register);
     if (schema.validate(data, schema.register)) {
         user.register(data).then((data) => {
             res.status(200).send({

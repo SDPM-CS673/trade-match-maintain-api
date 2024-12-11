@@ -19,7 +19,7 @@ const orderBookList = (req, res) => {
 }
 
 const addOrder = (req, res) => {
-    const data = common.sanitize(req.body);
+    const data = common.sanitize(req.body, schemas.addOrder);
     if (schemas.validate(data, schemas.addOrder)) { 
         orderbookModel.addOrder(req.body).then((data) => {
             res.status(200).send({
