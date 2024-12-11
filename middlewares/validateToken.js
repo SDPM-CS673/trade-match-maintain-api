@@ -3,8 +3,8 @@ const jwt = require("../utils/jwttoken");
 
 module.exports = function (app) {
     app.use(function (req, res, next) {
-        if (constants.whiteListAPIs.indexOf(req.url) !== -1) { 
-            const token = req.headers["Authtorization"];
+        if (constants.whiteListAPIs.indexOf(req.url) === -1) { 
+            const token = req.header("Authorization");
             if (!token) {
                 return res.status(403).send({
                     code: 4003,

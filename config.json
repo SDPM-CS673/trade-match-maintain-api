@@ -9,7 +9,7 @@
             ],
             "allowedMethods": "GET,POST,OPTIONS",
             "allowedHeaders": "accept,content-type, certificate ,Authorization",
-            "exposedHeaders": ""
+            "exposedHeaders": "Authorization"
         },
         "bodyParser": {
             "limit": "10mb"

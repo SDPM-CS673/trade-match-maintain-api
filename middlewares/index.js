@@ -55,6 +55,9 @@ module.exports = function (app) {
         limit: config.server.bodyParser.limit
     }));
 
+    // Validate token
+    validateToken(app);
+
     // Decrypt req body
 	// require("./decrypt-payload")(app);
 
