@@ -3,7 +3,8 @@ const common = require('../utils/common');
 const schemas = require('../models/schemas');
 
 const orderBookList = (req, res) => {
-    orderbookModel.getOrderList().then((data) => {
+    const userId = req.user.userId;
+    orderbookModel.getOrderList(userId).then((data) => {
         res.status(200).send({
             code: 2000,
             messageKey: "orderbook.list.success",
@@ -21,7 +22,7 @@ const orderBookList = (req, res) => {
 const addOrder = (req, res) => {
     const data = common.sanitize(req.body, schemas.addOrder);
     if (schemas.validate(data, schemas.addOrder)) { 
-        orderbookModel.addOrder(req.body).then((data) => {
+        orderbookModel.addOrder(req.body, req.user.userId).then((data) => {
             res.status(200).send({
                 code: 2000,
                 messageKey: "orderbook.add.success",
