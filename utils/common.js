@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
+const constants = require('../utils/constants');
 
 const generateUUID = () => {
     return uuidv4();
@@ -18,7 +19,7 @@ const generateUUID = () => {
 const sanitize =  (object, schema) => {
 	var schemaKeys = Object.keys(schema.properties);
 	var objectKeys = Object.keys(object);
-	var constantsValues = Object.values(constants.keys);
+	var constantsValues = [];
 
 	for (var key in objectKeys) {
 		var isValueMatched = false;
