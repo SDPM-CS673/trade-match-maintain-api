@@ -1,0 +1,44 @@
+{
+    "port": 7001,
+    "server": {
+        "CORS": {
+            "allowedOrigins": [
+                "http://localhost:4200/",
+                "http://localhost:3001/",
+                "http://localhost:5173/"
+            ],
+            "allowedMethods": "GET,POST,OPTIONS",
+            "allowedHeaders": "accept,content-type, certificate ,Authorization",
+            "exposedHeaders": "Authorization"
+        },
+        "bodyParser": {
+            "limit": "10mb"
+        },
+        "security": {
+            "enableCORS": true,
+            "enableXframe": true,
+            "enableHidePoweredBy": true,
+            "enableNoCaching": true,
+            "enableCSP": true,
+            "enableHSTS": true,
+            "enableXssFilter": true,
+            "enableReferrerPolicy": true,
+            "enableExpectCT": true
+        },
+        "enableCompression": true
+    },
+    "database": {
+        "sql": {
+            "host": "aws-0-us-west-1.pooler.supabase.com",
+            "user": "postgres.luittvqvnpygmcifdtwq",
+            "password": "CS673@unitrade",
+            "port": 6543,
+            "name": "postgres",
+            "dbUrl": "postgresql://postgres.luittvqvnpygmcifdtwq:CS673@unitrade@aws-0-us-west-1.pooler.supabase.com:6543/postgres",
+            "caCertPath": "./certificates/prod-ca-2021.crt"
+        }
+    },
+    "token": {
+        "secret": "f3262adf65e5845d25c5c704296992c286ab2b7606e594013902a2351082154c39d9fd7de9c5012cdf7606be56b476234baef975ee19a1fde2d344f9f7b3fce2783fdb697a14f745fc9e761de53adb8042afc610e29d622f9054a07f439b3dcd7f469c1ec5d055e8b46a222fe95d9cb9dcf291ad05627aeb19264ae75594386e8df23a85879bb131e263929b386f1278d2477dee6e68f98b9e6e5286e222faec1bcd83a27499b293f01f0be1901a9f816d66658a523d914c5d801232945ee638b658d5e0c918d345fef225a1449c4722747b07e971e6beec3daa49543f8578964d80e912131eee0861eb2b70c794be97f8d0262ab09d5283ff06a988b026e60c"
+    }
+}
